@@ -1,0 +1,48 @@
+
+plugins {
+    id 'com.android.application'
+    // Only compiles when (safeargs version < 2.4.2 OR applicationIdSuffix unset OR manifest.package set)
+    id 'androidx.navigation.safeargs' version '2.4.2'
+//    id 'androidx.navigation.safeargs' version '2.4.1'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "info.mschmitt.android.safeargs.app"
+        minSdk 23
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        debug {
+            // Only compiles when (safeargs version < 2.4.2 OR applicationIdSuffix unset OR manifest.package set)
+            applicationIdSuffix ".foo"
+//            applicationIdSuffix ""
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    namespace 'info.mschmitt.android.safeargs.app'
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.navigation:navigation-fragment:2.4.2'
+    implementation 'androidx.navigation:navigation-ui:2.4.2'
+    implementation 'com.google.android.material:material:1.6.0'
+}
